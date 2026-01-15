@@ -21,7 +21,18 @@ public class Transaction {
     private Account account;
     private LocalDate transactionDate;
     private Instant transactionTime;
+    private String transactionType;
     private String description;
+    private int amount;
+
+    
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 
     public int getId() {
         return id;
@@ -77,5 +88,13 @@ public class Transaction {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getTransactionType() {
+        return transactionType;
+    }
+
+    public void setTransactionType(String transactionType) {
+        this.transactionType = transactionType;
     }
 }

@@ -24,5 +24,10 @@ public class AccountService {
         return 0;
        
     }
+
+    public void updateBalance(Account account, int amount) {
+       account.setBalance(account.getBalance() - amount);
+       accountRepository.save(account);
+;    }
     
 }

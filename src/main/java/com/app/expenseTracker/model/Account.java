@@ -11,7 +11,10 @@ public class Account {
     private int id;
     private String accountType;
     private String bankName;
-    private String balance;
+    private int balance;
+    
+    
+
 
     public int getId() {
         return id;
@@ -37,11 +40,13 @@ public class Account {
         this.bankName = bankName;
     }
 
-    public String getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    public void setBalance(String balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
+
+  
 }
