@@ -11,10 +11,15 @@ public class Account {
     private int id;
     private String accountType;
     private String bankName;
+    @ManyToOne
+    private Financer financer;
     private int balance;
-    
-    
+    private int mainBalance;
 
+    
+    
+    
+    
 
     public int getId() {
         return id;
@@ -46,6 +51,22 @@ public class Account {
 
     public void setBalance(int balance) {
         this.balance = balance;
+    }
+
+    public int getMainBalance() {
+        return mainBalance;
+    }
+
+    public void setMainBalance(int mainBalance) {
+        this.mainBalance = mainBalance;
+    }
+
+    public Financer getFinancer() {
+        return financer;
+    }
+
+    public void setFinancer(Financer financer) {
+        this.financer = financer;
     }
 
   

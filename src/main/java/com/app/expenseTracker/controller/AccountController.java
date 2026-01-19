@@ -1,5 +1,7 @@
 package com.app.expenseTracker.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -30,6 +32,12 @@ public class AccountController {
     private ResponseEntity<?> getBalance(@RequestBody Account account){
         return ResponseEntity.status(HttpStatus.OK).body(accountService.getBalance(account));
     }
+
+    @GetMapping("/api/account/getAccounts")
+    public ResponseEntity<?> getAccounts(Principal principal) {
+        return ResponseEntity.status(HttpStatus.OK).body(accountService.getAccounts(principal.getName()));
+    }
+    
     
 
 }

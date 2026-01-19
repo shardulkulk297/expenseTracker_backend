@@ -46,6 +46,15 @@ public class TransactionController {
         return ResponseEntity.status(HttpStatus.OK).body(transactionService.getTransactionsByDate(principal.getName(), startDate, endDate));
     }
 
+    @GetMapping("/api/transaction/getFirst5Transactions")
+    public ResponseEntity<?> getFirst5Transactions(Principal principal) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(transactionService.getFirst5Transactions(principal.getName()));
+
+        
+    }
+    
+
 
     
     

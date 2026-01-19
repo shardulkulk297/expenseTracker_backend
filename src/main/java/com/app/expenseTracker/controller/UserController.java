@@ -49,6 +49,6 @@ public class UserController {
 
         String username = principal.getName();
         return userService.getLoggedInUserDetails(username);
-
+        
     }
 }

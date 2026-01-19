@@ -32,10 +32,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize->authorize
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/api/user/signup").permitAll()
-                        .requestMatchers("/api/user/getToken").authenticated()
+                        .requestMatchers("/api/user/getToken").permitAll()
                         .requestMatchers("/api/user/getLoggedInUserDetails").authenticated()
                         .requestMatchers("/api/financer/add").permitAll()
-
+                        .requestMatchers("/api/account/getAccounts").permitAll()
+                        .requestMatchers("/api/transaction/getFirst5Transactions").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)

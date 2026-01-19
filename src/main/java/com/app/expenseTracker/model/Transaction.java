@@ -13,8 +13,7 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne
-    private Category category;
+    private String category;
     @ManyToOne
     private Financer financer;
     @ManyToOne
@@ -42,11 +41,11 @@ public class Transaction {
         this.id = id;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

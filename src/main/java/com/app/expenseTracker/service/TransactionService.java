@@ -33,6 +33,7 @@ public class TransactionService {
 
         Financer financer = financerRepository.getByUsername(name);
         transaction.setFinancer(financer);
+        
         transaction.setTransactionDate(LocalDate.now());
         transaction.setTransactionTime(Instant.now());
         accountService.updateBalance(transaction.getAccount(), transaction.getAmount());
@@ -50,6 +51,11 @@ public class TransactionService {
     public List<Transaction> getTransactionsByDate(String name, LocalDate startDate, LocalDate endDate){
         List<Transaction> transactions = transactionRepository.getTransactionsByDate(name, startDate, endDate);
         logger.info("TRANSACTIONS BY DATE");
+        return transactions;
+    }
+
+    public List<Transaction> getFirst5Transactions(String username) {
+        List<Transaction> transactions = transactionRepository.getFirst5Transactions(username);
         return transactions;
     }
 }
