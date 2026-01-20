@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.expenseTracker.model.Financer;
 import com.app.expenseTracker.model.Transaction;
+import com.app.expenseTracker.repository.AccountRepository;
 import com.app.expenseTracker.repository.FinancerRepository;
 import com.app.expenseTracker.repository.TransactionRepository;
 
@@ -26,6 +27,8 @@ public class TransactionService {
     private TransactionRepository transactionRepository;
     @Autowired
     private AccountService accountService;
+    @Autowired
+    private AccountRepository accountRepository;
 
     private Logger logger = Logger.getLogger(TransactionService.class.getName());
 
@@ -36,6 +39,9 @@ public class TransactionService {
         
         transaction.setTransactionDate(LocalDate.now());
         transaction.setTransactionTime(Instant.now());
+        transaction.setAccount(accountRepository.findById(transaction.getAccount().getId()).orElseThrow(()-> new RuntimeException(
+            "Account not found"
+        )));
         accountService.updateBalance(transaction.getAccount(), transaction.getAmount());
         logger.info("ACCOUNT BALANCE UPDATED IN THE DATABASE");
         return transactionRepository.save(transaction);
