@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.app.expenseTracker.model.Account;
+import com.app.expenseTracker.model.Financer;
 import com.app.expenseTracker.repository.AccountRepository;
+import com.app.expenseTracker.repository.FinancerRepository;
 
 @Service
 public class AccountService {
@@ -16,7 +18,14 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
-    public Account addAccount(Account account) {
+    @Autowired
+    private FinancerRepository financerRepository;
+
+    public Account addAccount(Account account, String username) {
+
+        Financer financer = financerRepository.getByUsername(username);
+
+        account.setFinancer(financer);
        
         return accountRepository.save(account);
        

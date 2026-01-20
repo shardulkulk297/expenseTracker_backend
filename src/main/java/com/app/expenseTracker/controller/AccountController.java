@@ -24,8 +24,8 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping("/api/account/add")
-    private ResponseEntity<?> addAccount(@RequestBody Account account){
-        return ResponseEntity.status(HttpStatus.CREATED).body(accountService.addAccount(account));
+    private ResponseEntity<?> addAccount(@RequestBody Account account, Principal principal){
+        return ResponseEntity.status(HttpStatus.CREATED).body(accountService.addAccount(account, principal.getName()));
     }
 
     @GetMapping("/api/account/balance")
