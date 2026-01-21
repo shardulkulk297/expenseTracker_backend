@@ -26,6 +26,7 @@ public class AccountService {
         Financer financer = financerRepository.getByUsername(username);
 
         account.setFinancer(financer);
+        account.setMainBalance(account.getBalance());
        
         return accountRepository.save(account);
        

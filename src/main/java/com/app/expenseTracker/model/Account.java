@@ -13,8 +13,8 @@ public class Account {
     private String bankName;
     @ManyToOne
     private Financer financer;
-    private int balance;
-    private int mainBalance;
+    private long balance;
+    private long mainBalance;
 
     
     
@@ -45,19 +45,19 @@ public class Account {
         this.bankName = bankName;
     }
 
-    public int getBalance() {
+    public long getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(long balance) {
         this.balance = balance;
     }
 
-    public int getMainBalance() {
+    public long getMainBalance() {
         return mainBalance;
     }
 
-    public void setMainBalance(int mainBalance) {
+    public void setMainBalance(long mainBalance) {
         this.mainBalance = mainBalance;
     }
 
