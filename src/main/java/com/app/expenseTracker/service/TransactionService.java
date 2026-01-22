@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -61,7 +62,7 @@ public class TransactionService {
     }
 
     public List<Transaction> getFirst5Transactions(String username) {
-        List<Transaction> transactions = transactionRepository.getFirst5Transactions(username);
+        List<Transaction> transactions = transactionRepository.getFirst5Transactions(username, PageRequest.of(0, 5));
         return transactions;
     }
 }
